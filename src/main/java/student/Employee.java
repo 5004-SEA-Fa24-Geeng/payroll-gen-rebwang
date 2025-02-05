@@ -1,7 +1,5 @@
 package student;
 
-import java.math.BigDecimal;
-
 public abstract class Employee implements IEmployee {
     private final EmployeeType employeeType;
     private final String name;

@@ -1,7 +1,5 @@
 package student;
 
-import java.math.BigDecimal;
-
 public class SalaryEmployee extends Employee {
 
     public SalaryEmployee(String name, String id, double payRate, double pretaxDeductions,
