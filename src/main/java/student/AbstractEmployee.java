@@ -1,15 +1,15 @@
 package student;
 
-public abstract class Employee implements IEmployee {
-    private final EmployeeType employeeType;
-    private final String name;
-    private final String id;
-    private final double payRate;
-    private final double ytdEarnings;
-    private final double ytdTaxesPaid;
-    private final double preTaxDeductions;
+public abstract class AbstractEmployee implements IEmployee {
+    private EmployeeType employeeType;
+    private String name;
+    private String id;
+    private double payRate;
+    private double ytdEarnings;
+    private double ytdTaxesPaid;
+    private double preTaxDeductions;
 
-    public Employee(EmployeeType employeeType, String name, String id, double payRate, double pretaxDeductions,
+    public AbstractEmployee(EmployeeType employeeType, String name, String id, double payRate, double pretaxDeductions,
                     double ytdEarnings, double ytdTaxesPaid) {
         this.employeeType = employeeType;
         this.name = name;
@@ -43,23 +43,27 @@ public abstract class Employee implements IEmployee {
     protected abstract double calculateGrossPay(double hoursWorked);
 
     public IPayStub runPayroll (double hoursWorked) {
-        if (hoursWorked <= 0) {
+        if (hoursWorked < 0) {
             return null;
         }
         double grossPay = calculateGrossPay(hoursWorked);
-        return new PayStub(getName(),getID(),getPretaxDeductions(),getYTDEarnings(),getYTDTaxesPaid(),grossPay);
+        double tax = Math.round(((grossPay - getPretaxDeductions()) * 0.2265) * 100.0) / 100.0;
+        double netPay = Math.round((grossPay - getPretaxDeductions() - tax) * 100.0) / 100.0;
+        this.ytdEarnings = this.ytdEarnings + netPay;
+        this.ytdTaxesPaid = this.ytdTaxesPaid + tax;
+        return new PayStub(this, netPay, tax);
     }
 
     public String toCSV() {
         switch (this.employeeType) {
             case SALARY:
                 return String.format("%s,%s,%s,%.0f,%.0f,%.0f,%.0f\n",
-                        this.employeeType, this.name, this.id, this.payRate,
-                        this.preTaxDeductions, this.ytdEarnings, this.ytdTaxesPaid);
+                        getEmployeeType(), getName(), getID(), getPayRate(),
+                        getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
             case HOURLY:
                 return String.format("%s,%s,%s,%.2f,%.0f,%.0f,%.0f\n",
-                        this.employeeType, this.name, this.id, this.payRate,
-                        this.preTaxDeductions, this.ytdEarnings, this.ytdTaxesPaid);
+                        getEmployeeType(), getName(), getID(), getPayRate(),
+                        getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
             default:
                 throw new IllegalStateException("Unexpected EmployeeType: " + this.employeeType);
         }

@@ -4,37 +4,33 @@ import java.math.RoundingMode;
 
 
 public class PayStub implements IPayStub {
-    private String employeeName;
-    private String id;
-    private double ytdEarnings;
-    private double ytdTaxesPaid;
-    private double grossPay;
-    private double pretaxDeduction;
+    private IEmployee employee;
+    private double netPay;
+    private double tax;
 
-    public PayStub(String employeeName, String id, double pretaxDeduction, double ytdEarnings, double ytdTaxesPaid, double grossPay) {
-        this.employeeName = employeeName;
-        this.id = id;
-        this.pretaxDeduction = pretaxDeduction;
-        this.ytdEarnings = ytdEarnings;
-        this.ytdTaxesPaid = ytdTaxesPaid;
-        this.grossPay = grossPay;
+    public PayStub(IEmployee employee, double netPay, double tax) {
+        this.employee = employee;
+        this.netPay = netPay;
+        this.tax = tax;
+
     }
 
     public double getPay() {
-        return Math.round((this.grossPay - this.pretaxDeduction - getTaxesPaid()) * 100.0) / 100.0;
+        return this.netPay;
     }
 
     public double getTaxesPaid() {
-        return Math.round(((this.grossPay - this.pretaxDeduction) * 0.2265) * 100.0) / 100.0;
+        return this.tax;
     }
 
     public String toCSV() {
         String str;
-        str = this.employeeName + "," +
-                String.format("%.2f",getPay()) + "," +
-                String.format("%.2f",getTaxesPaid()) + "," +
-                String.format("%.2f", this.ytdEarnings + getPay()) + "," +
-                String.format("%.2f", this.ytdTaxesPaid + getTaxesPaid());
+        str = String.format("%s,%.2f,%.2f,%.2f,%.2f",
+                employee.getName(),
+                getPay(),
+                getTaxesPaid(),
+                employee.getYTDEarnings(),
+                employee.getYTDTaxesPaid());
         return str;
     }
 }

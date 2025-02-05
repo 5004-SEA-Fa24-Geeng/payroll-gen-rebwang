@@ -73,10 +73,13 @@ public final class PayrollGenerator {
             String employeeID = timeCard.getEmployeeID();
             IEmployee matchedEmployee = employees.stream()
                     .filter(emp -> emp.getID().equals(employeeID))
-                    .findFirst().orElse(null);
+                    .findFirst()
+                    .orElse(null);
+
             if (matchedEmployee == null) {
                 continue;
             }
+
             double hoursWorked = timeCard.getHoursWorked();
 
             if (hoursWorked < 0) {

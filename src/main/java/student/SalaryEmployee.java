@@ -1,6 +1,6 @@
 package student;
 
-public class SalaryEmployee extends Employee {
+public class SalaryEmployee extends AbstractEmployee {
 
     public SalaryEmployee(String name, String id, double payRate, double ytdEarnings, double ytdTaxesPaid,
                           double pretaxDeductions) {

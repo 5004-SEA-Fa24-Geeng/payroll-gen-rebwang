@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-class EmployeeTest {
+class AbstractEmployeeTest {
     private HourlyEmployee hourlyEmployee;
     private SalaryEmployee salaryEmployee;
 
@@ -59,7 +59,7 @@ class EmployeeTest {
     @Test
     void runPayroll() {
         assertNull(hourlyEmployee.runPayroll(-5));
-        assertNull(salaryEmployee.runPayroll(0));
+        assertNull(salaryEmployee.runPayroll(-2));
         IPayStub hourlyPayStub = hourlyEmployee.runPayroll(5);
         assertNotNull(hourlyPayStub);
         assertEquals(100.55, hourlyPayStub.getPay());
