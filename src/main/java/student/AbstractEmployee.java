@@ -85,8 +85,9 @@ public abstract class AbstractEmployee implements IEmployee {
         return new PayStub(this, netPay, tax);
     }
 
+    @Override
     public String toCSV() {
-        return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f\n",
+        return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f",
                 getEmployeeType(), getName(), getID(), getPayRate(),
                 getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
     }

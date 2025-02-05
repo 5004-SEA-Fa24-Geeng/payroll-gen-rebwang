@@ -74,8 +74,8 @@ class AbstractEmployeeTest {
 
     @Test
     void toCSV() {
-        assertEquals("HOURLY,Karen,a165,30.00,20.00,6000.00,100.00\n", hourlyEmployee.toCSV());
-        assertEquals("SALARY,Josh,s109,15000.00,1000.00,20000.00,5000.00\n", salaryEmployee.toCSV());
+        assertEquals("HOURLY,Karen,a165,30.00,20.00,6000.00,100.00", hourlyEmployee.toCSV());
+        assertEquals("SALARY,Josh,s109,15000.00,1000.00,20000.00,5000.00", salaryEmployee.toCSV());
     }
 
     @Test
