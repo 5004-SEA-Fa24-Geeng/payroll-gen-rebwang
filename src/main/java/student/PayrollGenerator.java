@@ -69,7 +69,24 @@ public final class PayrollGenerator {
         // as it is invalid, but if is 0, you still generate a paystub, but the amount is 0.
 
         //YOUR CODE HERE
-      
+        for (ITimeCard timeCard : timeCardList) {
+            String employeeID = timeCard.getEmployeeID();
+            IEmployee matchedEmployee = employees.stream()
+                    .filter(emp -> emp.getID().equals(employeeID))
+                    .findFirst().orElse(null);
+            if (matchedEmployee == null) {
+                continue;
+            }
+            double hoursWorked = timeCard.getHoursWorked();
+
+            if (hoursWorked < 0) {
+                continue;
+            }
+
+            IPayStub payStub = matchedEmployee.runPayroll(hoursWorked);
+                payStubs.add(payStub);
+        }
+
 
          // now save out employees to a new file
 
@@ -166,7 +183,7 @@ public final class PayrollGenerator {
                     if (i + 1 < args.length && !args[i + 1].startsWith("-")) {
                         arguments.employeeFile = args[i + 1];
                     } else {
-                        System.out.println("Missing argument for -i option");
+                        System.out.println("Missing argument for -e option");
                         arguments.printHelp();
                         System.exit(1);
                     }
