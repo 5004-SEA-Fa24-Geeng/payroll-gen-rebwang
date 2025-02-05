@@ -43,14 +43,13 @@ public final class Builder {
         }
 
         if (employeeType.equals("HOURLY")) {
-            return new HourlyEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions); }
-
-        else if (employeeType.equals("SALARY")) {
-            return new SalaryEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions); }
-
-        else {
+            return new HourlyEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
+        } else if (employeeType.equals("SALARY")) {
+            return new SalaryEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
+        } else {
             return null;
         }
+
     }
 
    /**
