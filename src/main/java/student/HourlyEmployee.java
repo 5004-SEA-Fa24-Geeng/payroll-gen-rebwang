@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class HourlyEmployee extends Employee {
 
-    public HourlyEmployee(String name, String id, double payRate, double pretaxDeductions,
-                              double ytdEarnings, double ytdTaxesPaid) {
+    public HourlyEmployee(String name, String id, double payRate, double ytdEarnings, double ytdTaxesPaid,
+                          double pretaxDeductions) {
         super(EmployeeType.HOURLY, name, id, payRate, pretaxDeductions, ytdEarnings, ytdTaxesPaid);}
 
     @Override

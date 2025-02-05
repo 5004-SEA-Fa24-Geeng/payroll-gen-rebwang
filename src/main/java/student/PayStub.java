@@ -11,7 +11,7 @@ public class PayStub implements IPayStub {
     private double grossPay;
     private double pretaxDeduction;
 
-    public PayStub(String employeeName,String id, double pretaxDeduction, double ytdEarnings, double ytdTaxesPaid, double grossPay) {
+    public PayStub(String employeeName, String id, double pretaxDeduction, double ytdEarnings, double ytdTaxesPaid, double grossPay) {
         this.employeeName = employeeName;
         this.id = id;
         this.pretaxDeduction = pretaxDeduction;
@@ -21,11 +21,11 @@ public class PayStub implements IPayStub {
     }
 
     public double getPay() {
-        return this.grossPay - this.pretaxDeduction - getTaxesPaid();
+        return Math.round((this.grossPay - this.pretaxDeduction - getTaxesPaid()) * 100.0) / 100.0;
     }
 
     public double getTaxesPaid() {
-        return (this.grossPay - this.pretaxDeduction) * 0.2265;
+        return Math.round(((this.grossPay - this.pretaxDeduction) * 0.2265) * 100.0) / 100.0;
     }
 
     public String toCSV() {

@@ -10,11 +10,13 @@ class SalaryEmployeeTest {
 
     @BeforeEach
     void setUp() {
-        salaryEmployee = new SalaryEmployee("Josh", "s109", 15000, 1000, 20000,
-                5000);
+        salaryEmployee = new SalaryEmployee("Josh", "s109", 15000, 20000,
+                5000,1000);
     }
 
     @Test
-    void runPayroll() {
+    void calculateGrossPay() {
+        assertEquals(0, salaryEmployee.calculateGrossPay(-1));
+        assertEquals(625, salaryEmployee.calculateGrossPay(30));
     }
 }

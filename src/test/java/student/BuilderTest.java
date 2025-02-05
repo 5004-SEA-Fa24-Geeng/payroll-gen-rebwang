@@ -9,7 +9,7 @@ class BuilderTest {
 
     @Test
     void buildHourlyEmployeeFromCSV() {
-        String csv1 = "HOURLY,Luffy,s192,30.00,0,20000,4530";
+        String csv1 = "HOURLY,Luffy,s192,30.00,20000,4530,0";
         IEmployee employee1 = Builder.buildEmployeeFromCSV(csv1);
         assertNotNull(employee1);
         assertInstanceOf(HourlyEmployee.class, employee1);
@@ -19,7 +19,7 @@ class BuilderTest {
 
     @Test
     void buildSalaryEmployeeFromCSV() {
-        String csv2 = "SALARY,Nami,s193,200000,1000,17017,4983";
+        String csv2 = "SALARY,Nami,s193,200000,17017,4983,1000";
         IEmployee employee2 = Builder.buildEmployeeFromCSV(csv2);
         assertNotNull(employee2);
         assertInstanceOf(SalaryEmployee.class, employee2);

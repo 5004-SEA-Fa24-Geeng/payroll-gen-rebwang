@@ -10,10 +10,11 @@ class HourlyEmployeeTest {
 
     @BeforeEach
     void setUp() {
-        hourlyEmployee = new HourlyEmployee("Karen","a165",30.0,20,6000,100);
+        hourlyEmployee = new HourlyEmployee("Karen","a165",30.0,6000,100,20);
     }
 
     @Test
-    void runPayroll() {
+    void calculateGrossPay() {
+        assertEquals(1650, hourlyEmployee.calculateGrossPay(50));
     }
 }

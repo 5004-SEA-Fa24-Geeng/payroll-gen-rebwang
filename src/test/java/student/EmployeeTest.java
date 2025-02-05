@@ -10,8 +10,8 @@ class EmployeeTest {
 
     @BeforeEach
     void setUp() {
-        hourlyEmployee = new HourlyEmployee("Karen","a165",30.0,20,6000,100);
-        salaryEmployee = new SalaryEmployee("Josh", "s109", 15000, 1000, 20000, 5000);
+        hourlyEmployee = new HourlyEmployee("Karen","a165",30.0,6000,100,20);
+        salaryEmployee = new SalaryEmployee("Josh", "s109", 15000, 20000, 5000, 1000);
     }
 
     @Test
@@ -82,7 +82,7 @@ class EmployeeTest {
     @Test
     void constructorThrowsExceptionPretaxDeductions() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            new HourlyEmployee("Karen","a165",30.0,-20,6000,100);
+            new HourlyEmployee("Karen","a165",30.0,20,6000,-100);
         });
         assertEquals("pretaxDeductions cannot be negative", exception.getMessage());
     }
@@ -90,7 +90,7 @@ class EmployeeTest {
     @Test
     void constructorThrowsExceptionYTDEarnings() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            new SalaryEmployee("Josh", "s109", 15000, 1000, -20000, 5000);
+            new SalaryEmployee("Josh", "s109", 15000, -1000, 20000, 5000);
         });
         assertEquals("ytdEarnings cannot be negative", exception.getMessage());
     }
@@ -98,7 +98,7 @@ class EmployeeTest {
     @Test
     void constructorThrowsExceptionYTDTaxesPaid() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            new SalaryEmployee("Josh", "s109", 15000, 1000, 20000, -5000);
+            new SalaryEmployee("Josh", "s109", 15000, 1000, -20000, 5000);
         });
         assertEquals("ytdTaxesPaid cannot be negative", exception.getMessage());
     }

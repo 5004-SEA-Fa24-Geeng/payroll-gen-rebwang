@@ -66,9 +66,9 @@ public final class Builder {
             EmployeeType type = EmployeeType.valueOf(parts[0]); // Converts "HOURLY" or "SALARY" to an enum
             switch (type) {
                 case HOURLY:
-                    return new HourlyEmployee(name, id, payRate, pretaxDeductions, ytdEarnings, ytdTaxesPaid);
+                    return new HourlyEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
                 case SALARY:
-                    return new SalaryEmployee(name, id, payRate, pretaxDeductions, ytdEarnings, ytdTaxesPaid);
+                    return new SalaryEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
                 default:
                     throw new IllegalArgumentException("Invalid employee type: " + parts[0]);
             }
