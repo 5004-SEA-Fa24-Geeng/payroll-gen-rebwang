@@ -4,8 +4,19 @@ package student;
  * This payStub class contains payment details for the current pay period.
  */
 public class PayStub implements IPayStub {
+    /**
+     * IEmployee - an instance of an employee
+     */
     private IEmployee employee;
+
+    /**
+     * double - the net pay amount for the current period
+     */
     private double netPay;
+
+    /**
+     * double - the amount of tax for the current period
+     */
     private double tax;
 
     /**

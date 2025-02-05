@@ -4,7 +4,14 @@ package student;
  * This class constructs a salaried employee, a subclass of AbstractEmployee.
  */
 public class SalaryEmployee extends AbstractEmployee {
+    /**
+     * constant - annual total pay terms.
+     */
     private static final double PAY_TERM = 24;
+
+    /**
+     * constant - rounding aid for calculations.
+     */
     private static final double ROUNDING = 100.0;
 
     /**

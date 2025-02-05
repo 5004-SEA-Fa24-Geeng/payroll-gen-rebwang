@@ -5,7 +5,14 @@ package student;
  */
 public class HourlyEmployee extends AbstractEmployee {
 
+    /**
+     * Constant - maximum hour calculated on base pay rate.
+     */
     private static final double MAX_BASE_HOUR = 40;
+
+    /**
+     * Constant - additional pay rate for overtime that over 40 hours.
+     */
     private static final double OVERTIME_RATE = 1.5;
 
     /**
