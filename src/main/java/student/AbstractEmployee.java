@@ -6,42 +6,42 @@ package student;
  */
 public abstract class AbstractEmployee implements IEmployee {
     /**
-     * String - the type of employee - SALARY or HOURLY
+     * String - the type of employee - SALARY or HOURLY.
      */
     private EmployeeType employeeType;
 
     /**
-     * String - Employee's name
+     * String - Employee's name.
      */
     private String name;
 
     /**
-     * String - Employee's ID
+     * String - Employee's ID.
      */
     private String id;
 
     /**
-     * double - Employee's pay rate
+     * double - Employee's pay rate.
      */
     private double payRate;
 
     /**
-     * double - year-to-date total earnings
+     * double - year-to-date total earnings.
      */
     private double ytdEarnings;
 
     /**
-     * double - year-to-date total taxes paid
+     * double - year-to-date total taxes paid.
      */
     private double ytdTaxesPaid;
 
     /**
-     * double - the deductions before tax deduction
+     * double - the deductions before tax deduction.
      */
     private double preTaxDeductions;
 
     /**
-     * constant - total percentage for calculating tax
+     * constant - total percentage for calculating tax.
      */
     private static final double TAX_PERCENTAGE = 0.2265;
 

@@ -5,12 +5,12 @@ package student;
  */
 public class TimeCard implements ITimeCard {
     /**
-     * String - employee's ID
+     * String - employee's ID.
      */
     private String id;
 
     /**
-     * double - the number of hours worked
+     * double - the number of hours worked.
      */
     private double hoursWorked;
 
