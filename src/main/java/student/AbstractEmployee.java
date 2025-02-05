@@ -55,17 +55,20 @@ public abstract class AbstractEmployee implements IEmployee {
     }
 
     public String toCSV() {
-        switch (this.employeeType) {
-            case SALARY:
-                return String.format("%s,%s,%s,%.0f,%.0f,%.0f,%.0f\n",
-                        getEmployeeType(), getName(), getID(), getPayRate(),
-                        getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
-            case HOURLY:
-                return String.format("%s,%s,%s,%.2f,%.0f,%.0f,%.0f\n",
-                        getEmployeeType(), getName(), getID(), getPayRate(),
-                        getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
-            default:
-                throw new IllegalStateException("Unexpected EmployeeType: " + this.employeeType);
-        }
+        return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f\n",
+                getEmployeeType(), getName(), getID(), getPayRate(),
+                getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
+//        switch (this.employeeType) {
+//            case SALARY:
+//                return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f\n",
+//                        getEmployeeType(), getName(), getID(), getPayRate(),
+//                        getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
+//            case HOURLY:
+//                return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f\n",
+//                        getEmployeeType(), getName(), getID(), getPayRate(),
+//                        getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
+//            default:
+//                throw new IllegalStateException("Unexpected EmployeeType: " + this.employeeType);
+//        }
     }
 }
