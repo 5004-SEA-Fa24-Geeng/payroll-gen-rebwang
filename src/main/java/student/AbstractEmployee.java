@@ -1,5 +1,9 @@
 package student;
 
+/**
+ * AbstractEmployee is an Abstract class that has essential payroll attributes.
+ * This class implements IEmployee interface and provides common functionalities for all employee types.
+ */
 public abstract class AbstractEmployee implements IEmployee {
     private EmployeeType employeeType;
     private String name;
@@ -12,8 +16,23 @@ public abstract class AbstractEmployee implements IEmployee {
     private static final double TAX_PERCENTAGE = 0.2265;
     private static final double ROUNDING = 100.0;
 
-    protected AbstractEmployee(EmployeeType employeeType, String name, String id, double payRate, double pretaxDeductions,
-                               double ytdEarnings, double ytdTaxesPaid) {
+    /**
+     * Constructs an AbstractEmployee with the below attributes.
+     * @param employeeType      String - the type of employee - SALARY or HOURLY
+     * @param name              String - Employee's name
+     * @param id                String - Employee's ID
+     * @param payRate           double - Employee's pay rate
+     * @param pretaxDeductions  double - the deductions before tax deduction
+     * @param ytdEarnings       double - year-to-date total earnings
+     * @param ytdTaxesPaid      double - year-to-date total taxes paid
+     */
+    protected AbstractEmployee(EmployeeType employeeType,
+                               String name,
+                               String id,
+                               double payRate,
+                               double pretaxDeductions,
+                               double ytdEarnings,
+                               double ytdTaxesPaid) {
         this.employeeType = employeeType;
         this.name = name;
         this.id = id;
@@ -29,6 +48,13 @@ public abstract class AbstractEmployee implements IEmployee {
         this.preTaxDeductions = pretaxDeductions;
     }
 
+    /**
+     * Validates that a given value is non-negative.
+     *
+     * @param value     The value to validate.
+     * @param fieldName The name of the field being validated.
+     * @throws IllegalArgumentException if the value is negative.
+     */
     private static void validateNonNegative(double value, String fieldName) {
         if (value < 0) {
             throw new IllegalArgumentException(fieldName + " cannot be negative");
@@ -70,6 +96,12 @@ public abstract class AbstractEmployee implements IEmployee {
         return this.preTaxDeductions;
     }
 
+    /**
+     * Abstract method to calculate gross pay based on hours worked.
+     *
+     * @param hoursWorked The number of hours worked.
+     * @return The calculated gross pay.
+     */
     protected abstract double calculateGrossPay(double hoursWorked);
 
     @Override
@@ -85,6 +117,11 @@ public abstract class AbstractEmployee implements IEmployee {
         return new PayStub(this, netPay, tax);
     }
 
+    /**
+     * Converts the employee's information into a CSV format.
+     *
+     * @return A string with the employee's details. This will be written to CSV file.
+     */
     @Override
     public String toCSV() {
         return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f",

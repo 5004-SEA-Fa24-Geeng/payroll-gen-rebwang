@@ -1,7 +1,5 @@
 package student;
 
-import java.io.IOException;
-
 /**
  * This is a static class (essentially functions) that will help you build objects from CSV strings.
  * These objects are then used in the rest of the program. Often these builders are associated
@@ -39,27 +37,24 @@ public final class Builder {
             pretaxDeductions = Double.parseDouble(parts[4]);
             ytdEarnings = Double.parseDouble(parts[5]);
             ytdTaxesPaid = Double.parseDouble(parts[6]);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             // handle the error
             return null;
         }
 
         if (employeeType.equals("HOURLY")) {
-            return new HourlyEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
-        }
+            return new HourlyEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions); }
         else if (employeeType.equals("SALARY")) {
-            return new SalaryEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
-        }
+            return new SalaryEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions); }
         else {
-            return null;
-        }
+            return null; }
     }
 
    /**
      * Converts a TimeCard from a CSV String.
      * 
      * @param csv csv string
-     * @return a TimeCard object
+     * @return a TimeCard object or null if the input is invalid
      */
     public static ITimeCard buildTimeCardFromCSV(String csv) {
         String[] parts = csv.split(",");
