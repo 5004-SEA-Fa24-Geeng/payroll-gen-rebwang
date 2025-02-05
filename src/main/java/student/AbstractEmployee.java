@@ -9,8 +9,11 @@ public abstract class AbstractEmployee implements IEmployee {
     private double ytdTaxesPaid;
     private double preTaxDeductions;
 
-    public AbstractEmployee(EmployeeType employeeType, String name, String id, double payRate, double pretaxDeductions,
-                    double ytdEarnings, double ytdTaxesPaid) {
+    private static final double TAX_PERCENTAGE = 0.2265;
+    private static final double ROUNDING = 100.0;
+
+    protected AbstractEmployee(EmployeeType employeeType, String name, String id, double payRate, double pretaxDeductions,
+                               double ytdEarnings, double ytdTaxesPaid) {
         this.employeeType = employeeType;
         this.name = name;
         this.id = id;
@@ -32,23 +35,51 @@ public abstract class AbstractEmployee implements IEmployee {
         }
     }
 
-    public String getName() { return this.name; }
-    public String getID() { return this.id; }
-    public double getPayRate() { return this.payRate; }
-    public String getEmployeeType() { return this.employeeType.toString(); }
-    public double getYTDEarnings() { return this.ytdEarnings; }
-    public double getYTDTaxesPaid() { return this.ytdTaxesPaid; }
-    public double getPretaxDeductions() { return this.preTaxDeductions; }
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String getID() {
+        return this.id;
+    }
+
+    @Override
+    public double getPayRate() {
+        return this.payRate;
+    }
+
+    @Override
+    public String getEmployeeType() {
+        return this.employeeType.toString();
+    }
+
+    @Override
+    public double getYTDEarnings() {
+        return this.ytdEarnings;
+    }
+
+    @Override
+    public double getYTDTaxesPaid() {
+        return this.ytdTaxesPaid;
+    }
+
+    @Override
+    public double getPretaxDeductions() {
+        return this.preTaxDeductions;
+    }
 
     protected abstract double calculateGrossPay(double hoursWorked);
 
-    public IPayStub runPayroll (double hoursWorked) {
+    @Override
+    public IPayStub runPayroll(double hoursWorked) {
         if (hoursWorked < 0) {
             return null;
         }
         double grossPay = calculateGrossPay(hoursWorked);
-        double tax = Math.round(((grossPay - getPretaxDeductions()) * 0.2265) * 100.0) / 100.0;
-        double netPay = Math.round((grossPay - getPretaxDeductions() - tax) * 100.0) / 100.0;
+        double tax = Math.round(((grossPay - getPretaxDeductions()) * TAX_PERCENTAGE) * ROUNDING) / ROUNDING;
+        double netPay = Math.round((grossPay - getPretaxDeductions() - tax) * ROUNDING) / ROUNDING;
         this.ytdEarnings = this.ytdEarnings + netPay;
         this.ytdTaxesPaid = this.ytdTaxesPaid + tax;
         return new PayStub(this, netPay, tax);
@@ -58,17 +89,5 @@ public abstract class AbstractEmployee implements IEmployee {
         return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f\n",
                 getEmployeeType(), getName(), getID(), getPayRate(),
                 getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
-//        switch (this.employeeType) {
-//            case SALARY:
-//                return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f\n",
-//                        getEmployeeType(), getName(), getID(), getPayRate(),
-//                        getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
-//            case HOURLY:
-//                return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f\n",
-//                        getEmployeeType(), getName(), getID(), getPayRate(),
-//                        getPretaxDeductions(), getYTDEarnings(), getYTDTaxesPaid());
-//            default:
-//                throw new IllegalStateException("Unexpected EmployeeType: " + this.employeeType);
-//        }
     }
 }

@@ -1,6 +1,8 @@
 package student;
 
 public class SalaryEmployee extends AbstractEmployee {
+    private static final double PAY_TERM = 24;
+    private static final double ROUNDING = 100.0;
 
     public SalaryEmployee(String name, String id, double payRate, double ytdEarnings, double ytdTaxesPaid,
                           double pretaxDeductions) {
@@ -8,9 +10,6 @@ public class SalaryEmployee extends AbstractEmployee {
 
     @Override
     protected double calculateGrossPay(double hoursWorked) {
-        if (hoursWorked > 0) {
-            return Math.round(getPayRate() / 24 * 100.0) / 100.0;
-        }
-        return 0;
+        return Math.round((getPayRate() / PAY_TERM) * ROUNDING) / ROUNDING;
     }
 }

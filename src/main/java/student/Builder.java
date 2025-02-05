@@ -20,46 +20,28 @@ public final class Builder {
      * @param csv the CSV string
      * @return the employee object
      */
-    public static IEmployee buildEmployeeFromCSV(String csv) throws RuntimeException {
+    public static IEmployee buildEmployeeFromCSV(String csv) {
 
         String[] parts = csv.split(",");
         if (parts.length != 7) {
-            throw new RuntimeException("Invalid CSV format: should have 7 parts");
+            return null;
         }
 
         String name = parts[1];
         String id = parts[2];
 
         double payRate;
-        try {
-            payRate = Double.parseDouble(parts[3]);
-        } catch(NumberFormatException e) {
-            // handle the error
-            throw new NumberFormatException("Invalid payRate");
-        }
-
         double pretaxDeductions;
-        try {
-            pretaxDeductions = Double.parseDouble(parts[4]);
-        } catch(NumberFormatException e) {
-            // handle the error
-            throw new NumberFormatException("Invalid pretaxDeductions");
-        }
-
         double ytdEarnings;
-        try {
-            ytdEarnings = Double.parseDouble(parts[5]);
-        } catch(NumberFormatException e) {
-            // handle the error
-            throw new NumberFormatException("Invalid ytdEarnings");
-        }
-
         double ytdTaxesPaid;
         try {
+            payRate = Double.parseDouble(parts[3]);
+            pretaxDeductions = Double.parseDouble(parts[4]);
+            ytdEarnings = Double.parseDouble(parts[5]);
             ytdTaxesPaid = Double.parseDouble(parts[6]);
         } catch(NumberFormatException e) {
             // handle the error
-            throw new NumberFormatException("Invalid ytdTaxesPaid");
+            return null;
         }
 
         try {
@@ -73,7 +55,7 @@ public final class Builder {
                     throw new IllegalArgumentException("Invalid employee type: " + parts[0]);
             }
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Invalid employee type: " + parts[0], e);
+            return null;
         }
     }
 
@@ -85,8 +67,16 @@ public final class Builder {
      */
     public static ITimeCard buildTimeCardFromCSV(String csv) {
         String[] parts = csv.split(",");
+        if (parts.length != 2) {
+            return null;
+        }
         String id = parts[0];
-        double hoursWorked = Double.parseDouble(parts[1]);
+        double hoursWorked;
+        try {
+            hoursWorked = Double.parseDouble(parts[1]);
+        } catch (NumberFormatException e) {
+            return null;
+        }
         return new TimeCard(id, hoursWorked);
     }
 }

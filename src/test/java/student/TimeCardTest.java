@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TimeCardTest {
-    TimeCard timeCard1;
+    private TimeCard timeCard1;
 
     @BeforeEach
     void setUp() {
@@ -22,14 +22,4 @@ class TimeCardTest {
     void getHoursWorked() {
         assertEquals(45, timeCard1.getHoursWorked());
     }
-
-    @Test
-    void constructorException() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            new TimeCard("a100", -50);
-        });
-
-        assertEquals("Hours worked cannot be negative", exception.getMessage());
-    }
-
 }

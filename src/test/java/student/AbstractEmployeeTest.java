@@ -58,8 +58,14 @@ class AbstractEmployeeTest {
 
     @Test
     void runPayroll() {
+        // Test negative working hours
         assertNull(hourlyEmployee.runPayroll(-5));
         assertNull(salaryEmployee.runPayroll(-2));
+
+        // Test salary employee working 0 hr still gets paid
+        assertNotNull(salaryEmployee.runPayroll(0));
+
+        // Test hourly employee working normal hours
         IPayStub hourlyPayStub = hourlyEmployee.runPayroll(5);
         assertNotNull(hourlyPayStub);
         assertEquals(100.55, hourlyPayStub.getPay());

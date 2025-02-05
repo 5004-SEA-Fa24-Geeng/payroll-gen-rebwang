@@ -15,14 +15,17 @@ public class PayStub implements IPayStub {
 
     }
 
+    @Override
     public double getPay() {
         return this.netPay;
     }
 
+    @Override
     public double getTaxesPaid() {
         return this.tax;
     }
 
+    @Override
     public String toCSV() {
         String str;
         str = String.format("%s,%.2f,%.2f,%.2f,%.2f",

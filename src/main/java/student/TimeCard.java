@@ -6,10 +6,6 @@ public class TimeCard implements ITimeCard {
 
     public TimeCard(String id, double hoursWorked) throws IllegalArgumentException {
         this.id = id;
-
-        if (hoursWorked < 0) {
-            throw new IllegalArgumentException("Hours worked cannot be negative");
-        }
         this.hoursWorked = hoursWorked;
     }
 

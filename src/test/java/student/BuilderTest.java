@@ -30,16 +30,13 @@ class BuilderTest {
     @Test
     void buildEmployeeFromCSVInvalidInputException() {
         String csvException = "HOURLY,Jay";
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> Builder.buildEmployeeFromCSV(csvException));
-        assertEquals("Invalid CSV format: should have 7 parts", exception.getMessage());
+        assertNull(Builder.buildEmployeeFromCSV(csvException));
     }
 
     @Test
     void buildEmployeeFromCSVEmployeeTypeException() {
         String employeeTypeError = "Hourly,Nami,s193,200000,1000,17017,4983";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
-                Builder.buildEmployeeFromCSV(employeeTypeError));
-        assertEquals("Invalid employee type: Hourly", exception.getMessage());
+        assertNull(Builder.buildEmployeeFromCSV(employeeTypeError));
     }
 
     @Test
@@ -54,10 +51,7 @@ class BuilderTest {
 
     @Test
     void timeCardConstructorException() {
-        String csv4 = "x199,-30";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            Builder.buildTimeCardFromCSV(csv4);
-        });
-        assertEquals("Hours worked cannot be negative", exception.getMessage());
+        String csv4 = "x199,30,50";
+        assertNull(Builder.buildTimeCardFromCSV(csv4));
     }
 }
