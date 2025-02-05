@@ -21,12 +21,12 @@ public final class Builder {
      * @return the employee object
      */
     public static IEmployee buildEmployeeFromCSV(String csv) {
-
         String[] parts = csv.split(",");
         if (parts.length != 7) {
             return null;
         }
 
+        String employeeType = parts[0];
         String name = parts[1];
         String id = parts[2];
 
@@ -44,17 +44,13 @@ public final class Builder {
             return null;
         }
 
-        try {
-            EmployeeType type = EmployeeType.valueOf(parts[0]); // Converts "HOURLY" or "SALARY" to an enum
-            switch (type) {
-                case HOURLY:
-                    return new HourlyEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
-                case SALARY:
-                    return new SalaryEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
-                default:
-                    throw new IllegalArgumentException("Invalid employee type: " + parts[0]);
-            }
-        } catch (IllegalArgumentException e) {
+        if (employeeType.equals("HOURLY")) {
+            return new HourlyEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
+        }
+        else if (employeeType.equals("SALARY")) {
+            return new SalaryEmployee(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
+        }
+        else {
             return null;
         }
     }

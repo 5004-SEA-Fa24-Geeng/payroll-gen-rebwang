@@ -70,9 +70,12 @@ public final class PayrollGenerator {
 
         //YOUR CODE HERE
         for (ITimeCard timeCard : timeCardList) {
-            String employeeID = timeCard.getEmployeeID();
+            if (timeCard == null) {
+                continue;
+            }
+
             IEmployee matchedEmployee = employees.stream()
-                    .filter(emp -> emp.getID().equals(employeeID))
+                    .filter(emp -> emp.getID().equals(timeCard.getEmployeeID()))
                     .findFirst()
                     .orElse(null);
 
@@ -87,7 +90,7 @@ public final class PayrollGenerator {
             }
 
             IPayStub payStub = matchedEmployee.runPayroll(hoursWorked);
-                payStubs.add(payStub);
+            payStubs.add(payStub);
         }
 
 
