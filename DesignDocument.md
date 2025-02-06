@@ -59,3 +59,7 @@ Go through your completed code, and update your class diagram to reflect the fin
 > The value of reflective writing has been highly researched and documented within computer science, from learning new information to showing higher salaries in the workplace. For this next part, we encourage you to take time, and truly focus on your retrospective.
 
 Take time to reflect on how your design has changed. Write in *prose* (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two. 
+
+The first changes I made were adding the `PayStub` and `TimeCard` classes. I also removed the additional `Employee` class since it was a duplicate of the `AbstractEmployee` class. Additionally, I introduced an `enum` class to store `EmployeeType`, which I initially thought should be handled separately in different subclasses.
+
+These changes were necessary due to a lack of clarity in the relationships between the classes and how they interact. The structure only became clearer as I delved deeper into coding. However, this led to mistakes early on, causing me to spend extra time debugging. Moving forward, it would be more efficient to thoroughly understand class relationships before writing any code.
