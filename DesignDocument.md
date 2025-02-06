@@ -25,15 +25,26 @@ Write a test (in english) that you can picture for the class diagram you have cr
 
 You should feel free to number your brainstorm. 
 
-1. Test that the `Employee` class properly returns `name` from `getName()`
-2. Test that the `Employee` class properly returns `id` from `getId()`
-3. continue to add your brainstorm here (you don't need to super formal - this is a brainstorm) - yes, you can change the bullets above to something that fits your design.
+1. Test that the `AbstractEmployee` class properly returns `name` from `getName()`
+2. Test that the `AbstractEmployee` class properly returns `id` from `getId()`
+3. `AbstractEmployee` class properly returns `payRate` from `getPayRate()`
+4. `AbstractEmployee` class properly returns `employeeType` from `getEmployeeType()`
+5. `AbstractEmployee` class properly returns `ytdEarnings` from `getYTDEarnings()`
+6. `AbstractEmployee` class properly returns `ytdTaxesPaid` from `getYTDTaxesPaid()`
+7. `HourlyEmployee` class properly returns `grossPay` from `calculateGrossPay()`
+8. `SalaryEmployee` class properly returns `grossPay` from `calculateGrossPay()`
+9. `TimeCard` class properly returns `employeeID` and `hoursWorked` from `getEmployeeID()` and `getHoursWorked()`
+10. `PayStub` class properly returns `netPay` from `getPay()`
+11. `PayStub` class properly returns `tax` from `getTaxesPaid()`
+12. `Builder` class properly returns `Employee object` from `buildEmployeeFromCSV()`
+13. `Builder` class properly returns `TimeCard object` from `buildTimeCardFromCSV()`
 
 
 
 ## (FINAL DESIGN): Class Diagram
 
-Go through your completed code, and update your class diagram to reflect the final design. Make sure you check the file in the browser on github.com to make sure it is rendering correctly. It is normal that the two diagrams don't match! Rarely (though possible) is your initial design perfect. 
+Go through your completed code, and update your class diagram to reflect the final design. Make sure you check the file in the browser on github.com to make sure it is rendering correctly. It is normal that the two diagrams don't match! Rarely (though possible) is your initial design perfect.
+![Final Design](img/Final%20UML.jpg)
 
 > [!WARNING]
 > If you resubmit your assignment for manual grading, this is a section that often needs updating. You should double check with every resubmit to make sure it is up to date.
