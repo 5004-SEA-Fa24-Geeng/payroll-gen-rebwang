@@ -60,7 +60,7 @@ Go through your completed code, and update your class diagram to reflect the fin
 
 Take time to reflect on how your design has changed. Write in *prose* (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two. 
 
-Answer:
+**Answer:**
 
 The first changes I made were adding the `PayStub` and `TimeCard` classes. I also removed the additional `Employee` class since it was a duplicate of the `AbstractEmployee` class. Additionally, I introduced an `enum` class to store `EmployeeType`, which I initially thought should be handled separately in different subclasses.
 
