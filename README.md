@@ -10,11 +10,11 @@ How many hours did it take you to complete this assignment (estimate)?
 Did you collaborate with any other students/TAs/Professors? If so, tell us who and in what
 capacity.
 
-* one per row, add more if needed
+* No, I did not collaborate with any others.
   
 Did you use any external resources (you do not have to cite in class material)? (Cite them below)
 
-* one row per resource
+* Yes, I use genAI tool to seek some advice on creating proper javadocs, and refine my wording/grammar mistakes.
 
 
 (Optional) What was your favorite part of the assignment?

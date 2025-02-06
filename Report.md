@@ -4,33 +4,37 @@ This report helps you demonstrate your understanding of the concepts. You should
 
 ## Technical Questions
 
-1. What does CSV stand for? 
-   
+1. What does CSV stand for?
+   CSV stands for "comma-separated values," is a plain text file where data is organized in a table format with each value separated by a comma
 
 2. Why would you declare `List<IEmployee>` instead of `ArrayList<HourlyEmployee>`?
+    Using `IEmployee` allows the flexibility to store any type of employee, such as `HourlyEmployee` or `SalaryEmployee`.
+    Using `List<>` also allows the flexibility to change the collection type, such as `ArrayList` or `LinkedList`.
 
 3. When you have one class referencing another object, such as storing that object as one of the attributes of the first class - what type of relationship is that called (between has-a and is-a)?
+    It's called "has-a" relationship when one class contains an instance of another class as an attribute.
 
 4. Can you provide an example of a has-a relationship in your code (if one exists)?
-
+   `public PayStub(IEmployee employee, double netPay, double tax) { this.employee = employee; }`
 
 5. Can you provide an example of an is-a relationship in your code (if one exists)?
-
+    `public class HourlyEmployee extends AbstractEmployee {}` 
+   `HourlyEmployee` class extends from `AbstractEmployee` class.
 
 6. What is the difference between an interface and an abstract class?
-
+    An interface serves as a contract, defines the methods/behaviors that multiple classes should implement, and it cannot have constructors, only has abstract methods. An abstract class provides common functionality to subclasses to avoid repeated code, and it can have fields and contructors.
 
 7. What is the advantage of using an interface over an abstract class?
-
+   A class can implement multiple interfaces but can only extend one abstract class. Also, interface ensures consistency in method names and behavior across different implementations.
 
 8. Is the following code valid or not? `List<int> numbers = new ArrayList<int>();`, explain why or why not. If not, explain how you can fix it. 
+    No, it's not valid. The correct code should be `List<Integer> numbers = new ArrayList<>();` since `int` is a primitive type, but we should put a wrapper class like `Integer` for Generics and Collections.
 
+9. Which class/method is described as the "driver" for your application?
+    The `main` method in `PayrollGenerator` class is the driver of this application.
 
-9. Which class/method is described as the "driver" for your application? 
-
-
-
-10. How do you create a temporary folder for JUnit Testing? 
+10. How do you create a temporary folder for JUnit Testing?
+    `@TempDir Path tempDir`
 
 
 ## Deeper Thinking 
