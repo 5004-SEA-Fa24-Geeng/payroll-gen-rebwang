@@ -56,7 +56,7 @@ Think through the issue / making sure to cite any resources you use to help you 
 
 The answer to this is mostly open. We ask that you cite at least two sources to show your understanding of the issue. The TAs will also give feedback on your answer, though will be liberal in grading as long as you show a good faith effort to understand the issue and making an effort to think about how your design to could help meet your employer's goals of salary equity. 
 
-#### I would consider adding data points such as employee’s length of service, seniority, job classification, and demographic information, including gender, race, and age. [^1] These attributes will allow for a more detailed analysis of pay discrepancies across different employee groups. In addition, implementing salary range for each role can help assess whether employees in similar positions are being compensated ~~equally~~ quitably (this is the correct word!).
+#### I would consider adding data points such as employee’s length of service, seniority, job classification, and demographic information, including gender, race, and age. [^1] These attributes will allow for a more detailed analysis of pay discrepancies across different employee groups. In addition, implementing salary range for each role can help assess whether employees in similar positions are being compensated ~~equally~~ equitably (this is the correct word!).
 #### It would also be important to analyze compensation at multiple stages in the payroll process. For example: when salaries are initially set, during annual reviews, and after promotions. This helps to identify potential gaps early. [^2]
 
 ## References
